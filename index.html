@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,32 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <script src="script.js"></script>
+    <div class="game-Container">
+        <div class="game-intro">
+            <div>
+                <input type="radio" id="1st-fish" value="fish 1">
+                <label for="1st-fish">Fish 1</label>
+
+                <input type="radio" id="2nd-fish" value="fish 2">
+                <label for="2nd-fish">Fish 2</label>
+
+                <input type="radio" id="3rd-fish" value="fish 3">
+                <label for="3rd-fish">Fish 3</label>
+            </div>
+            <button id="start-button">Start Game</button>
+            <div class="game-manual">
+                <p>Use key U to navigate your fish up</p>
+                <p>Use key N to navigate your fish down</p>
+            </div>
+        </div>
+        <div id="mainCanvas">
+        </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

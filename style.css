@@ -1,3 +1,21 @@
-html {
-    background-color: red;
+
+@font-face {
+    font-family: KGCrossingALine;
+    src: url(KGCrossingALine.ttf);
+}
+
+canvas {
+    background-color: blue;
+}
+
+.game-Container {
+    background-color: aqua;
+}
+
+#start-button{
+    padding: 8px 25px;
+    font-family: KGCrossingALine;
+    font-size: 25px;
+    background-color: #6666FF;
+    border-radius: 8px;
 }
