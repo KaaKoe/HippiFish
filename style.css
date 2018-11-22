@@ -1,18 +1,33 @@
-
 @font-face {
     font-family: KGCrossingALine;
     src: url(font_styles/KGCrossingALine.ttf);
 }
 
+html {
+    background-image: url("images/voodoo_cactus_underwater.jpg");
+}
+
+.canvas {
+    display: flex;
+}
+
+.game-manual {}
+
 canvas {
     background-color: blue;
+    border: 2px solid black;
 }
 
 .game-Container {
-    background-color: aqua;
+
 }
 
-#start-button{
+.game-intro {
+    font-family: KGCrossingALine;
+
+}
+
+#start-button {
     padding: 8px 25px;
     font-family: KGCrossingALine;
     font-size: 25px;

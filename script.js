@@ -3,25 +3,54 @@ window.onload = function () {
         startGame();
     };
 
-    var jQueryCanvas = $('<canvas width="900" height="600"></canvas>');
+
+    var jQueryCanvas = $('<canvas width="800" height="600"></canvas>');
     var canvas = jQueryCanvas[0];
     var ctx = canvas.getContext('2d');
     $('#mainCanvas').append(canvas);
 
-    //variables defining start position of userFish, fishSchoan
+    //variable defining start position of userFish
     var userFishYPosition = 300;
 
-    var fishSchoanXPosition = 900;
-
-
-    var fiSchoanArr = [];
+    //fishSchoan coming into frame randomly from right side
+    var fishSchoanArr = [];
     var fishSchoanImages = [
-        "images/molumen_Fish.png",
-        "images/peixe-fish.png",
-        "images/pescetto.png",
-        "images/Swordfish.png",
+        "images/fisch1.png",
+        "images/fisch 01.png",
+        "images/fisch 02.png",
+        "images/fisch 03.png",
+        "images/fisch 04.png",
+        "images/fisch 05.png",
+        "images/fisch 06.png",
+        "images/fisch 07.png",
     ]
 
+
+    var startImage = new Image();
+    startImage.src = "images/coralBackground_dark.jpg";
+    startImage.onload = function() {
+        ctx.drawImage(startImage, 0, 0, 800, 600)
+    }
+
+    var backgroundImage = {
+        img: startImage,   
+        x: 0,
+        speed: -1,
+
+        move: function () {
+            this.x += this.speed;
+            this.x %= 800;
+        },
+
+        draw: function () {
+            ctx.drawImage(this.img, this.x, 0);
+            if (this.speed < 0) {
+                ctx.drawImage(this.img, this.x + 800, 0);
+            } else {
+                ctx.drawImage(this.img, this.x - this.img.width, 0, 800);
+            }
+        },
+    };
 
     //User fish at the left side of the frame
     var imgUserFish = new Image();
@@ -30,12 +59,8 @@ window.onload = function () {
         ctx.drawImage(imgUserFish, 0, userFishYPosition - 16, 64, 64)
     }
 
-    //FishSchoan coming into frame from right side
-    var imgFishSchoan = new Image()
-    imgFishSchoan.src = "images/peixe-fish.png";
-    imgFishSchoan.onload = function () {
-        ctx.drawImage(imgFishSchoan, fishSchoanXPosition, 400, 84, 57)
-    }
+    //variable that is used to count frames
+    var frame = 0;
 
     function startGame() {
         document.onkeydown = function (event) {
@@ -51,28 +76,47 @@ window.onload = function () {
         window.requestAnimationFrame(updateCanvas);
     }
 
+    var gameOver = false;
+
     //function that undates my main-Canvas constantly
     function updateCanvas() {
-        if (
-            intersect({
-                x: 0,
-                y: userFishYPosition,
-                width: 64,
-                height: 64
-            }, {
-                x: fishSchoanXPosition,
-                y: 400,
-                width: 84,
-                height: 57,
-            })
-        ) {
-            alert("game over");
+        //random type, YPosition, size of new fish
+        frame++;
+        for (i = 0; i < fishSchoanArr.length; i++) {
+            fishSchoanArr[i].x -= 3; //rapidity of fishSchoan moving from right to left
+            //collision
+            if (
+                intersect({
+                    x: 0,
+                    y: userFishYPosition,
+                    width: 64,
+                    height: 64,
+                }, {
+                    x: fishSchoanArr[i].x,
+                    y: fishSchoanArr[i].y,
+                    width: 84,
+                    height: 57,
+                })
+            ) {
+                alert("game over");
+                gameOver = true;
+            }
         }
-        ctx.clearRect(0, 0, 900, 600);
-        fishSchoanXPosition -= 4;
-        ctx.drawImage(imgFishSchoan, fishSchoanXPosition, 400, 84, 57)
+        if (frame % 80 == 0) {
+            var randomIndex = Math.floor(fishSchoanImages.length * Math.random()); //random fish from Schoan Array
+            var randomY = Math.floor(Math.random() * 600); //random Y Position of new fish
+            fishSchoanArr.push(new Fish(fishSchoanImages[randomIndex], 800, randomY, 84, 57, 50));
+        }
+
+        //clear old frame and draw every new frame again with modified objects
+        ctx.clearRect(0, 0, 800, 600);
+        backgroundImage.draw();
+        backgroundImage.move();
         ctx.drawImage(imgUserFish, 0, userFishYPosition - 16, 64, 64);
-        window.requestAnimationFrame(updateCanvas);
+        for (i = 0; i < fishSchoanArr.length; i++) {
+            ctx.drawImage(fishSchoanArr[i].img, fishSchoanArr[i].x, fishSchoanArr[i].y, 84, 57)
+        }
+        if (!gameOver) window.requestAnimationFrame(updateCanvas);
     }
 
     //use this function inside updateCanvas() to check if car and obstacle crash
