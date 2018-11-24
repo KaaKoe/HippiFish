@@ -3,12 +3,42 @@
     src: url(font_styles/KGCrossingALine.ttf);
 }
 
+* {
+    font-family: KGCrossingALine;
+}
+
+
+#score {
+    border: 2px solid black;
+    width: 150px;
+    height: 100px;
+    padding-top: 30px;
+    text-align: center;
+    font-size: 38px;
+    border-radius: 8px;
+    background-color: #6666FF;
+}
+
 html {
     background-image: url("images/voodoo_cactus_underwater.jpg");
 }
 
 .canvas {
-    display: flex;
+
+}
+
+.startScreen {
+    z-index: 10;
+    background-color: whitesmoke;
+    width: 60%;
+    height: 60%;
+    position: absolute;
+    position: center;
+    top: 200px;
+    left: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .game-manual {}
@@ -16,6 +46,7 @@ html {
 canvas {
     background-color: blue;
     border: 2px solid black;
+    border-radius: 8px;
 }
 
 .game-Container {
@@ -23,13 +54,11 @@ canvas {
 }
 
 .game-intro {
-    font-family: KGCrossingALine;
 
 }
 
 #start-button {
     padding: 8px 25px;
-    font-family: KGCrossingALine;
     font-size: 25px;
     background-color: #6666FF;
     border-radius: 8px;
