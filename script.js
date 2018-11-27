@@ -1,8 +1,9 @@
 window.onload = function () {
 
     var gameStarted = false;
-    document.getElementById('score').innerHTML = "Your Score: "
-    document.getElementById('highscore').innerHTML = "Highscores: "
+
+    var score = 0;
+    document.getElementById('score').innerHTML = "Your Score: " + score;
 
 
     //Story Div as start Screen
@@ -11,10 +12,20 @@ window.onload = function () {
         $('.enterNameDiv').show();
     }
 
+    var playerName = "";
+    drawHighscore()
+
+
     //enter your name and click submit button to continue
     document.getElementById("submitButton").onclick = function () {
-        $('.enterNameDiv').hide();
-        $('.startDiv').show();
+        playerName = $('#typeName').val();
+        if (playerName != 0) {
+            $('.enterNameDiv').hide();
+            $('.startDiv').show();
+        } else {
+            alert('Please type in your name!');
+        }
+
     }
 
     //click start-button --> start Game
@@ -83,8 +94,8 @@ window.onload = function () {
 
     //User fish at the left side of the frame
     var imgUserFish = new Image();
-    var userFishWidth = 38.33;
-    var userFishHeight = 64.8;
+    var userFishWidth = 40;
+    var userFishHeight = 40;
     imgUserFish.src = "images/purpleUserFish.png";
 
 
@@ -146,7 +157,10 @@ window.onload = function () {
                         // alert("game over");
                         gameOver = true;
                         $('.gameOver').show();
-
+                        updateHighscore()
+                        drawHighscore();
+                        // localStorage.setItem(playerName, score);
+                        // writeHighScore(sortStorage(localStorage));
 
                     }
                 }
@@ -195,18 +209,17 @@ window.onload = function () {
         if (!gameOver) window.requestAnimationFrame(updateCanvas);
     }
 
-
     //use this function inside updateCanvas() to check if userFish and fishSchoan crash
     function intersect(rect1, rect2) {
-        rect1left = rect1.x
-        rect1top = rect1.y
-        rect1right = rect1.x + rect1.width
-        rect1bottom = rect1.y + rect1.height
+        rect1left = rect1.x + 3
+        rect1top = rect1.y + 3
+        rect1right = rect1.x + rect1.width - 3
+        rect1bottom = rect1.y + rect1.height - 3
 
-        rect2left = rect2.x
-        rect2top = rect2.y
-        rect2right = rect2.x + rect2.width
-        rect2bottom = rect2.y + rect2.height
+        rect2left = rect2.x + 3
+        rect2top = rect2.y + 3
+        rect2right = rect2.x + rect2.width - 3
+        rect2bottom = rect2.y + rect2.height - 3
 
         return !(rect1left > rect2right ||
             rect1right < rect2left ||
@@ -228,6 +241,55 @@ window.onload = function () {
         ) userFishYPosition += 5;
     }
 
+    function updateHighscore() {
+        var highscoresArray = JSON.parse(localStorage.getItem('Highscores'));
+        if (!highscoresArray) highscoresArray = []
+        highscoresArray.push({
+            player: playerName,
+            score: score
+        })
+        localStorage.setItem('Highscores', JSON.stringify(highscoresArray));
+    }
+
+    function drawHighscore() {
+        var highscoresArray = JSON.parse(localStorage.getItem('Highscores'));
+        if (!highscoresArray) highscoresArray = []
+        highscoresArray.sort(function (a, b) {
+            if (a.score < b.score) {
+                return 1;
+            } else if (a.score > b.score) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+        highscoresArray.filter(function (el, index) {
+            return index < 3
+        }).forEach(function (el, index) {
+            $("#score" + index).text(el.score);
+            $("#player" + index).text(el.player)
+        })
+    }
+
 }
 
-var score = 0;
+
+// function sortStorage(storage) {
+//     var storageArray = [];
+//     for (var player in storage) {
+//       if (player !== "length") {
+//         storageArray.push([player, storage[player]]);
+//       }
+//     }
+//     storageArray.sort(function(a, b) {
+//       return b[1] - a[1];
+//     });
+//     return storageArray;
+//   }
+
+//   function writeHighScore(array) {
+//     for (var i = 0; i < localStorage.length && i < 6; i++) {
+//       $("#first").append(array[i][0] + "<br>");
+//       $("#firstScore").append(array[i][1] + "<br>");
+//     }
+//   }
