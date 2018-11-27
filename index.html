@@ -10,33 +10,57 @@
 </head>
 
 <body>
-    <div class="game-Container">
-        <div class="game-intro">
-            <div class="fishType">
-                <input type="radio" id="1st-fish" value="fish 1">
-                <label for="1st-fish">Fish 1</label>
+    <div class="body-container">
+        <div class="header">- HUNGRYFISH - NYOMNYOM - HUNGRYFISH - EATME - HUNGRYFISH - MAMPF - HUNGRYFISH - BLUBBLUB - HUNGRYFISH - PYRANHA - HUNGRYFISH - CUTESTCANNIBALE - HUNGRYFISH - </div>
+        <div class="game-Container">
+            <div class="game-intro-Container">
+                <div class="logo">
+                    <img src="images/purpleUserFish.png" width=50% height=50%>
+                </div>
 
-                <input type="radio" id="2nd-fish" value="fish 2">
-                <label for="2nd-fish">Fish 2</label>
+                <div class="game-manual">
+                    <p>Use key <strong>U</strong> to navigate your fish up</p>
+                    <p>Use key <strong>N</strong> to navigate your fish down</p>
+                </div>
 
-                <input type="radio" id="3rd-fish" value="fish 3">
-                <label for="3rd-fish">Fish 3</label>
             </div>
-            <button id="start-button">Start Game</button>
-            <div class="game-manual">
-                <p>Use key U to navigate your fish up</p>
-                <p>Use key N to navigate your fish down</p>
+
+
+            <div class="canvas">
+                <div id="mainCanvas">
+                    <div class="storyDiv">
+                        <p>Story</p>
+                        <button id="storyButton">got it!</button>
+                    </div>
+                    <div class="enterNameDiv">
+                        <div id="inputDiv">
+                            <label for="name" id="Name">Enter your Name</label><br>
+                            <input type="text" id="typeName">
+                            <button id="submitButton" type="submit">Submit</button>
+                        </div>
+                    </div>
+                    <div class="startDiv">
+                        <div class="startButtonDiv">
+                            <p>Ready to play?</p>
+                            <button id="start-button">Start Game</button>
+                        </div>
+                    </div>
+                    <div class="gameOver">
+                        <p>Game Over!</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="startScreen"></div>
+            <div class="scoreDiv-Container">
+                <div id="score"></div>
+                <div id="highscore"></div>
             </div>
         </div>
-        <div id="score"></div>
-
-        <div class="canvas">
-            <div id="mainCanvas">
-            </div>
-        </div>
-        <div class="startScreen"></div>
-
+        <div class="footer">- HUNGRYFISH - NYOMNYOM - HUNGRYFISH - EATME - HUNGRYFISH - MAMPF - HUNGRYFISH - BLUBBLUB - HUNGRYFISH - PYRANHA - HUNGRYFISH - CUTESTCANNIBALE - HUNGRYFISH - </div>
     </div>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="sound.js"></script>

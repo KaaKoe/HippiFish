@@ -1,65 +1,208 @@
 @font-face {
-    font-family: KGCrossingALine;
-    src: url(font_styles/KGCrossingALine.ttf);
+  font-family: KGCrossingALine;
+  src: url(font_styles/KGCrossingALine.ttf);
 }
 
 * {
-    font-family: KGCrossingALine;
-}
-
-
-#score {
-    border: 2px solid black;
-    width: 150px;
-    height: 100px;
-    padding-top: 30px;
-    text-align: center;
-    font-size: 38px;
-    border-radius: 8px;
-    background-color: #6666FF;
+  font-family: KGCrossingALine;
 }
 
 html {
-    background-image: url("images/voodoo_cactus_underwater.jpg");
+  background-color: black;
 }
 
-.canvas {
-
-}
-
-.startScreen {
-    z-index: 10;
-    background-color: whitesmoke;
-    width: 60%;
-    height: 60%;
-    position: absolute;
-    position: center;
-    top: 200px;
-    left: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-.game-manual {}
-
-canvas {
-    background-color: blue;
-    border: 2px solid black;
-    border-radius: 8px;
+.header {
+  color: white;
+  border: 1px solid white;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .game-Container {
-
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
 }
 
-.game-intro {
+.game-intro-Container {
+  width: 300px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.game-manual {
+  font-size: 20px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px 15px;
+}
+
+.logo {
+  margin-left: 60px;
+}
+
+#mainCanvas {
+  position: relative;
+}
+
+.canvas {
+  position: relative;
+  margin: o auto;
+}
+
+canvas {
+  border-radius: 8px;
+}
+
+.storyDiv {
+  z-index: 10;
+  background-color: white;
+  opacity: 0.4;
+  width: 500px;
+  height: 200px;
+  position: absolute;
+  position: center;
+  top: 120px;
+  left: 145px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 40px;
+}
+
+#storyButton {
+    padding: 8px 25px;
+    font-size: 25px;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+}
+
+.enterNameDiv {
+  display: none;
+  z-index: 10;
+  background-color: white;
+  opacity: 0.4;
+  width: 500px;
+  height: 200px;
+  position: absolute;
+  position: center;
+  top: 120px;
+  left: 145px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 40px;
+}
+
+#inputDiv {
+  z-index: 15;
+  position: absolute;
+  position: center;
+  top: 50px;
+  left: 150px;
+}
+
+#submitButton {
+  background-color: black;
+  color: white;
+}
+
+.startDiv {
+  z-index: 10;
+  background-color: white;
+  opacity: 0.4;
+  width: 500px;
+  height: 200px;
+  position: absolute;
+  position: center;
+  top: 120px;
+  left: 145px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  border-radius: 8px;
+  display: none;
+}
+
+.startButtonDiv {
+  z-index: 15;
+  position: absolute;
+  position: center;
+  top: 5px;
+  left: 160px;
 }
 
 #start-button {
-    padding: 8px 25px;
-    font-size: 25px;
-    background-color: #6666FF;
-    border-radius: 8px;
+  padding: 8px 25px;
+  font-size: 25px;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+}
+
+.startButtonDiv p {
+  font-size: 40px;
+}
+
+.gameOver {
+  z-index: 10;
+  width: 500px;
+  height: 200px;
+  position: absolute;
+  position: center;
+  top: 20px;
+  left: 140px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 150px;
+  padding-bottom: 120px;
+  display: none;
+}
+
+.scoreDiv-Container {
+  width: 300px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: url('images/seaGras.png');
+}
+
+#score {
+  width: 150px;
+  height: 50px;
+  padding-top: 20px;
+  padding-left: 15px;
+  font-size: 30px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+#highscore {
+  font-size: 20px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px 15px;
+  width: 200px;
+  height: 200px;
+}
+
+.footer {
+  color: white;
+  border: 1px solid white;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }

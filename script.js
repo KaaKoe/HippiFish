@@ -1,11 +1,29 @@
 window.onload = function () {
 
     var gameStarted = false;
+    document.getElementById('score').innerHTML = "Your Score: "
+    document.getElementById('highscore').innerHTML = "Highscores: "
 
+
+    //Story Div as start Screen
+    document.getElementById("storyButton").onclick = function () {
+        $('.storyDiv').hide();
+        $('.enterNameDiv').show();
+    }
+
+    //enter your name and click submit button to continue
+    document.getElementById("submitButton").onclick = function () {
+        $('.enterNameDiv').hide();
+        $('.startDiv').show();
+    }
+
+    //click start-button --> start Game
     document.getElementById("start-button").onclick = function () {
         if (!gameStarted) {
             gameStarted = true;
             startGame();
+            $('#score').show();
+            $('.startDiv').hide();
         }
     };
 
@@ -32,14 +50,17 @@ window.onload = function () {
 
 
     //array with different ratios that get multiplied by by constructor Fish width and height to randomize the size of fishes
-    var ratios = [0.3, 0.5, 0.7, 1.2, 1.5, 1.7];
+    var ratios = [0.4, 0.5, 0.7, 1.2, 1.5, 1.7];
 
+    //Image on vanvas before game starts
     var startImage = new Image();
     startImage.src = "images/coralBackground_dark.jpg";
     startImage.onload = function () {
         ctx.drawImage(startImage, 0, 0, canvas.width, canvas.height)
     }
 
+
+    //looping background image
     var backgroundImage = {
         img: startImage,
         x: 0,
@@ -62,10 +83,10 @@ window.onload = function () {
 
     //User fish at the left side of the frame
     var imgUserFish = new Image();
-    var userFishWidth = 40;
-    var userFishHeight = 75;
+    var userFishWidth = 38.33;
+    var userFishHeight = 64.8;
     imgUserFish.src = "images/purpleUserFish.png";
-   
+
 
     //variable that is used to count frames
     var frame = 0;
@@ -93,14 +114,13 @@ window.onload = function () {
         }
         frame++;
         for (i = 0; i < fishSchoanArr.length; i++) {
-            if(score < 8) {
-                fishSchoanArr[i].x -= 2;
-            } else if(score < 15) {
-                fishSchoanArr[i].x -= 3;
-            } else if(score < 21) {
-                fishSchoanArr[i].x -= 4;
-            }
             //rapidity of fishSchoan moving from right to left
+            if (score < 22) {
+                fishSchoanArr[i].x -= 2;
+            } else {
+                fishSchoanArr[i].x -= 3;
+            }
+
             //collision
             if (
                 intersect({
@@ -120,23 +140,44 @@ window.onload = function () {
                         userFishWidth += 0.1 * fishSchoanArr[i].width;
                         userFishHeight = userFishWidth * (2160 / 1296);
                         fishSchoanArr[i].status = false;
-                        score ++;
+                        score++;
                         console.log(score);
                     } else {
-                        alert("game over");
+                        // alert("game over");
                         gameOver = true;
+                        $('.gameOver').show();
+
+
                     }
                 }
             }
         }
-        if (frame % 60 == 0)
-        {
-            var randomIndex = Math.floor(fishSchoanImages.length * Math.random()); //random fish from Schoan Array
-            var randomY = Math.floor(Math.random() * 600); //random Y Position of new fish
-            var randomRatio = Math.floor(Math.random() * ratios.length); //random size of new fish
-            var fish = new Fish(fishSchoanImages[randomIndex], canvas.width, randomY, ratios[randomRatio], userFishWidth)
-            fishSchoanArr.push(fish);
+        if (score < 7) {
+            if (frame % 60 == 0) {
+                var randomIndex = Math.floor(fishSchoanImages.length * Math.random()); //random fish from Schoan Array
+                var randomY = Math.floor(Math.random() * 600); //random Y Position of new fish
+                var randomRatio = Math.floor(Math.random() * ratios.length); //random size of new fish
+                var fish = new Fish(fishSchoanImages[randomIndex], canvas.width, randomY, ratios[randomRatio], userFishWidth)
+                fishSchoanArr.push(fish);
+            }
+        } else if (score >= 7 && score < 16) {
+            if (frame % 50 == 0) {
+                var randomIndex = Math.floor(fishSchoanImages.length * Math.random()); //random fish from Schoan Array
+                var randomY = Math.floor(Math.random() * 600); //random Y Position of new fish
+                var randomRatio = Math.floor(Math.random() * ratios.length); //random size of new fish
+                var fish = new Fish(fishSchoanImages[randomIndex], canvas.width, randomY, ratios[randomRatio], userFishWidth)
+                fishSchoanArr.push(fish);
+            }
+        } else if (score >= 16) {
+            if (frame % 40 == 0) {
+                var randomIndex = Math.floor(fishSchoanImages.length * Math.random()); //random fish from Schoan Array
+                var randomY = Math.floor(Math.random() * 600); //random Y Position of new fish
+                var randomRatio = Math.floor(Math.random() * ratios.length); //random size of new fish
+                var fish = new Fish(fishSchoanImages[randomIndex], canvas.width, randomY, ratios[randomRatio], userFishWidth)
+                fishSchoanArr.push(fish);
+            }
         }
+
 
         //clear old frame and draw every new frame again with modified objects
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -154,18 +195,17 @@ window.onload = function () {
         if (!gameOver) window.requestAnimationFrame(updateCanvas);
     }
 
-    ctx.fillText("Score", 700, 500);
 
-    //use this function inside updateCanvas() to check if car and obstacle crash
+    //use this function inside updateCanvas() to check if userFish and fishSchoan crash
     function intersect(rect1, rect2) {
-        rect1left = rect1.x 
-        rect1top = rect1.y 
-        rect1right = rect1.x + rect1.width 
+        rect1left = rect1.x
+        rect1top = rect1.y
+        rect1right = rect1.x + rect1.width
         rect1bottom = rect1.y + rect1.height
 
-        rect2left = rect2.x 
+        rect2left = rect2.x
         rect2top = rect2.y
-        rect2right = rect2.x + rect2.width 
+        rect2right = rect2.x + rect2.width
         rect2bottom = rect2.y + rect2.height
 
         return !(rect1left > rect2right ||
@@ -175,13 +215,13 @@ window.onload = function () {
     }
 
 
-
+    //move userFish up
     function moveUp() {
         if (userFishYPosition > 16) {
             userFishYPosition -= 5;
         }
     }
-
+    //move userFish down
     function moveDown() {
         if (
             userFishYPosition < 584
