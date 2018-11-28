@@ -232,14 +232,14 @@ window.onload = function () {
 
     //move userFish up
     function moveUp() {
-        if (userFishYPosition > 16) {
+        if (userFishYPosition > (userFishHeight / 2)) {
             userFishYPosition -= 5;
         }
     }
     //move userFish down
     function moveDown() {
         if (
-            userFishYPosition < 584
+            userFishYPosition < (canvas.height - (userFishHeight / 2))
         ) userFishYPosition += 5;
     }
 
