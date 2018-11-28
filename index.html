@@ -15,12 +15,16 @@
         <div class="game-Container">
             <div class="game-intro-Container">
                 <div class="logo">
-                    <img src="images/purpleUserFish.png" width=50% height=50%>
+                    <img src="images/purpleUserFish.png" width=300px height=300px>
                 </div>
 
                 <div class="game-manual">
-                    <p>Use key <strong>U</strong> to navigate your fish up</p>
-                    <p>Use key <strong>N</strong> to navigate your fish down</p>
+                    <p>Help this little fellar to survive and grow by kissing smaller fish during his journey through
+                        the ocean jungle.<br>One kiss equals one score.</p>
+                    <p>But be aware!<br>Avoid meetups with bigger fish - they'll frighten him to death.</p>
+
+                    <p>Use key <strong>U</strong> to navigate up</p>
+                    <p>Use key <strong>N</strong> to navigate down</p>
                 </div>
 
             </div>
@@ -28,10 +32,6 @@
 
             <div class="canvas">
                 <div id="mainCanvas">
-                    <div class="storyDiv">
-                        <p>Story</p>
-                        <button id="storyButton">got it!</button>
-                    </div>
                     <div class="enterNameDiv">
                         <div id="inputDiv">
                             <label for="name" id="Name">Enter your Name</label><br>
@@ -46,7 +46,8 @@
                         </div>
                     </div>
                     <div class="gameOver">
-                        <p>Game Over!</p>
+                        <p>Game Over! <br> <button id="newGame-button">New Game</button></p>
+
                     </div>
                 </div>
 
@@ -54,45 +55,44 @@
             <div class="startScreen"></div>
             <div class="scoreDiv-Container">
                 <div id="score"></div>
-                <div id="highscore">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Score</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row"></th>
-                                <th id="player0"></th>
-                                <th id="score0"></th>
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <th id="player1"></th>
-                                <th id="score1"></th>
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <th id="player2"></th>
-                                <th id="score2"></th>
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <th id="player3"></th>
-                                <th id="score3"></th>
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <th id="player4"></th>
-                                <th id="score4"></th>
-                            </tr>
-                        </tbody>
+                <div class="highscoreContainer">
+                    <div class="highscoreHeader">Highscores</div>
+                    <div id="highscore">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th id="highName" scope="col">Name</th>
+                                    <th scope="col">Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th id="player0"></th>
+                                    <th id="score0"></th>
+                                </tr>
+                                <tr>
+                                    <th id="player1"></th>
+                                    <th id="score1"></th>
+                                </tr>
+                                <tr>
 
-                    </table>
+                                    <th id="player2"></th>
+                                    <th id="score2"></th>
+                                </tr>
+                                <tr>
+                                    <th id="player3"></th>
+                                    <th id="score3"></th>
+                                </tr>
+                                <tr>
+                                    <th id="player4"></th>
+                                    <th id="score4"></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
+
             </div>
         </div>
         <div class="footer"></div>

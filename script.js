@@ -7,13 +7,13 @@ window.onload = function () {
 
 
     //Story Div as start Screen
-    document.getElementById("storyButton").onclick = function () {
-        $('.storyDiv').hide();
-        $('.enterNameDiv').show();
-    }
+    // document.getElementById("storyButton").onclick = function () {
+    //     $('.storyDiv').hide();
+    //     $('.enterNameDiv').show();
+    // }
 
     var playerName = "";
-    drawHighscore()
+    drawHighscore();
 
 
     //enter your name and click submit button to continue
@@ -37,6 +37,12 @@ window.onload = function () {
             $('.startDiv').hide();
         }
     };
+
+    document.getElementById("newGame-button").onclick = function () {
+        window.location.reload();
+    }
+
+
 
 
     var jQueryCanvas = $('<canvas width="800" height="600"></canvas>');
@@ -149,19 +155,15 @@ window.onload = function () {
                 if (fishSchoanArr[i].status == true) {
                     if (userFishWidth > fishSchoanArr[i].width && userFishHeight > fishSchoanArr[i].height) {
                         userFishWidth += 0.1 * fishSchoanArr[i].width;
-                        userFishHeight = userFishWidth * (2160 / 1296);
+                        userFishHeight = userFishWidth * (40 / 40);
                         fishSchoanArr[i].status = false;
                         score++;
                         console.log(score);
                     } else {
-                        // alert("game over");
                         gameOver = true;
                         $('.gameOver').show();
                         updateHighscore()
                         drawHighscore();
-                        // localStorage.setItem(playerName, score);
-                        // writeHighScore(sortStorage(localStorage));
-
                     }
                 }
             }
@@ -272,24 +274,3 @@ window.onload = function () {
     }
 
 }
-
-
-// function sortStorage(storage) {
-//     var storageArray = [];
-//     for (var player in storage) {
-//       if (player !== "length") {
-//         storageArray.push([player, storage[player]]);
-//       }
-//     }
-//     storageArray.sort(function(a, b) {
-//       return b[1] - a[1];
-//     });
-//     return storageArray;
-//   }
-
-//   function writeHighScore(array) {
-//     for (var i = 0; i < localStorage.length && i < 6; i++) {
-//       $("#first").append(array[i][0] + "<br>");
-//       $("#firstScore").append(array[i][1] + "<br>");
-//     }
-//   }
