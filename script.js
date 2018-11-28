@@ -214,14 +214,14 @@ window.onload = function () {
     //use this function inside updateCanvas() to check if userFish and fishSchoan crash
     function intersect(rect1, rect2) {
         rect1left = rect1.x + 3
-        rect1top = rect1.y + 3
+        rect1top = rect1.y + 15
         rect1right = rect1.x + rect1.width - 3
-        rect1bottom = rect1.y + rect1.height - 3
+        rect1bottom = rect1.y + rect1.height - 15
 
         rect2left = rect2.x + 3
-        rect2top = rect2.y + 3
+        rect2top = rect2.y + 15
         rect2right = rect2.x + rect2.width - 3
-        rect2bottom = rect2.y + rect2.height - 3
+        rect2bottom = rect2.y + rect2.height - 15
 
         return !(rect1left > rect2right ||
             rect1right < rect2left ||
