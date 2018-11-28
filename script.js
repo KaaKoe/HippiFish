@@ -100,8 +100,8 @@ window.onload = function () {
 
     //User fish at the left side of the frame
     var imgUserFish = new Image();
-    var userFishWidth = 40;
-    var userFishHeight = 40;
+    var userFishWidth = 42;
+    var userFishHeight = 31.6;
     imgUserFish.src = "images/purpleUserFish.png";
 
 
@@ -155,7 +155,7 @@ window.onload = function () {
                 if (fishSchoanArr[i].status == true) {
                     if (userFishWidth > fishSchoanArr[i].width && userFishHeight > fishSchoanArr[i].height) {
                         userFishWidth += 0.1 * fishSchoanArr[i].width;
-                        userFishHeight = userFishWidth * (40 / 40);
+                        userFishHeight = userFishWidth * (790 / 1050);
                         fishSchoanArr[i].status = false;
                         score++;
                         console.log(score);
@@ -213,15 +213,15 @@ window.onload = function () {
 
     //use this function inside updateCanvas() to check if userFish and fishSchoan crash
     function intersect(rect1, rect2) {
-        rect1left = rect1.x + 3
-        rect1top = rect1.y + 15
-        rect1right = rect1.x + rect1.width - 3
-        rect1bottom = rect1.y + rect1.height - 15
+        rect1left = rect1.x + 5
+        rect1top = rect1.y + 5
+        rect1right = rect1.x + rect1.width - 5
+        rect1bottom = rect1.y + rect1.height - 5
 
-        rect2left = rect2.x + 3
-        rect2top = rect2.y + 15
-        rect2right = rect2.x + rect2.width - 3
-        rect2bottom = rect2.y + rect2.height - 15
+        rect2left = rect2.x + 5
+        rect2top = rect2.y + 5
+        rect2right = rect2.x + rect2.width - 5
+        rect2bottom = rect2.y + rect2.height - 5
 
         return !(rect1left > rect2right ||
             rect1right < rect2left ||
