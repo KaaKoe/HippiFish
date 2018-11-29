@@ -8,7 +8,8 @@
 }
 
 html {
-  background-color: black;
+  background-color: #003333;
+
 }
 
 .body-container {
@@ -18,13 +19,19 @@ html {
   justify-content: space-between;
 }
 
-.header {
-  color: white;
+.header p {
   font-size: 100px;
   text-align: center;
   margin-top: 30px;
   margin-bottom: 10px;
   margin-top: 30px;
+  background: red;
+  background: -webkit-linear-gradient(left, orange, yellow, green, cyan, blue, violet);
+  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+  background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .game-Container {
@@ -39,21 +46,27 @@ html {
   height: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
+  align-items: baseline;
 }
 
 .game-manual {
   font-size: 22px;
-  background-color: white;
-  opacity: 0.6;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  opacity: 0.8;
   border-radius: 8px;
-  padding: 20px 15px;
-  margin-bottom: 100px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-.logo {
-  margin-right: 10px;
+
+.logo img {
+  margin-left: 40px;
+  width: 60%;
+  height: 60%;
+  position: relative;
 }
 
 #newGame-button {
@@ -75,6 +88,7 @@ html {
 
 canvas {
   border-radius: 8px;
+  border: 2px white solid;
 }
 
 .enterNameDiv {
@@ -174,15 +188,16 @@ canvas {
 }
 
 #score {
-  width: 150px;
-  height: 50px;
-  padding-top: 20px;
-  padding-left: 15px;
-  font-size: 30px;
+  width: 200px;
+  height: 70px;
+  padding-top: 30px;
+  padding-left: 25px;
+  font-size: 40px;
   border-radius: 8px;
   background-color: black;
-  color: white;
+  opacity: 0.8;
   border: 2px solid white;
+  color: white;
 }
 
 .highscoreHeader {
@@ -195,6 +210,7 @@ canvas {
   background-color: black;
   color: white;
   border: 2px solid white;
+  opacity: 0.8;
   border-radius: 8px;
   padding: 20px 15px;
   width: 140px;
@@ -202,7 +218,8 @@ canvas {
 }
 
 .table {
-    margin-left: 10px;
+  margin-left: 10px;
+  font-size-adjust: inherit;
 }
 
 .table thead {
