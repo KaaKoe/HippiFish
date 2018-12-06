@@ -43,6 +43,8 @@ window.onload = function() {
   var userFishHeight = 31.6;
   imgUserFish.src = "images/purpleUserFish.png";
 
+
+
   //variable defining start position of userFish
   var userFishYPosition = 300; /*canvas.height / 2 - userFishHeight / 2;*/
   var userFishXPosition = 16;
@@ -59,16 +61,17 @@ window.onload = function() {
     "images/fisch 07.png"
   ];
 
-  var fishSchoanArrLeft = [];
-  var fishSchoanArrLeftImages = [
-    "images/fish 01.left.png",
-    "images/fish 02.left.png",
-    "images/fish 03.left.png",
-    "images/fish 04.left.png",
-    "images/fish 05.left.png",
-    "images/fish 06.left.png",
-    "images/fish 08.left.png"
-  ];
+  //FishSchoan coming into frame from left
+  // var fishSchoanArrLeft = [];
+  // var fishSchoanArrLeftImages = [
+  //   "images/fish 01.left.png",
+  //   "images/fish 02.left.png",
+  //   "images/fish 03.left.png",
+  //   "images/fish 04.left.png",
+  //   "images/fish 05.left.png",
+  //   "images/fish 06.left.png",
+  //   "images/fish 08.left.png"
+  // ];
 
   //array with different ratios that get multiplied by by constructor Fish width and height to randomize the size of fishes
   var ratios = [0.4, 0.5, 0.7, 1.2, 1.5, 1.7];
@@ -110,7 +113,7 @@ window.onload = function() {
         case 87:
           moveUp();
           break;
-        case 89:
+        case 83:
           moveDown();
           break;
         case 68:
