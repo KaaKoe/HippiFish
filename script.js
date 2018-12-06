@@ -7,6 +7,20 @@ window.onload = function() {
   var playerName = "";
   drawHighscore();
 
+  document.onkeydown = function (event) {
+    switch (event.keyCode) {
+      case 13:
+      playerName = $("#typeName").val();
+    if (playerName != 0) {
+      $(".enterNameDiv").hide();
+      $(".startDiv").show();
+    } else {
+      alert("Please type in your name!");
+    }
+    }
+  }
+
+
   //enter your name and click submit button to continue
   document.getElementById("submitButton").onclick = function() {
     playerName = $("#typeName").val();
@@ -18,7 +32,7 @@ window.onload = function() {
     }
   };
 
-  
+
 
   //click start-button --> start Game
   document.getElementById("start-button").onclick = function() {
