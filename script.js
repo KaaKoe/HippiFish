@@ -59,6 +59,17 @@ window.onload = function() {
     "images/fisch 07.png"
   ];
 
+  var fishSchoanArrLeft = [];
+  var fishSchoanArrLeftImages = [
+    "images/fish 01.left.png",
+    "images/fish 02.left.png",
+    "images/fish 03.left.png",
+    "images/fish 04.left.png",
+    "images/fish 05.left.png",
+    "images/fish 06.left.png",
+    "images/fish 08.left.png"
+  ];
+
   //array with different ratios that get multiplied by by constructor Fish width and height to randomize the size of fishes
   var ratios = [0.4, 0.5, 0.7, 1.2, 1.5, 1.7];
 
@@ -96,10 +107,10 @@ window.onload = function() {
   function startGame() {
     document.onkeydown = function(event) {
       switch (event.keyCode) {
-        case 85:
+        case 87:
           moveUp();
           break;
-        case 78:
+        case 89:
           moveDown();
           break;
         case 68:
@@ -172,7 +183,7 @@ window.onload = function() {
       }
     }
     if (score < 7) {
-      if (frame % 60 == 0) {
+      if (frame % 100 == 0) {
         var randomIndex = Math.floor(fishSchoanImages.length * Math.random()); //random fish from Schoan Array
         var randomY = Math.floor(Math.random() * 600); //random Y Position of new fish
         var randomRatio = Math.floor(Math.random() * ratios.length); //random size of new fish
@@ -186,7 +197,7 @@ window.onload = function() {
         fishSchoanArr.push(fish);
       }
     } else if (score >= 7 && score < 16) {
-      if (frame % 50 == 0) {
+      if (frame % 90 == 0) {
         var randomIndex = Math.floor(fishSchoanImages.length * Math.random()); //random fish from Schoan Array
         var randomY = Math.floor(Math.random() * 600); //random Y Position of new fish
         var randomRatio = Math.floor(Math.random() * ratios.length); //random size of new fish
@@ -200,7 +211,7 @@ window.onload = function() {
         fishSchoanArr.push(fish);
       }
     } else if (score >= 16) {
-      if (frame % 40 == 0) {
+      if (frame % 80 == 0) {
         var randomIndex = Math.floor(fishSchoanImages.length * Math.random()); //random fish from Schoan Array
         var randomY = Math.floor(Math.random() * 600); //random Y Position of new fish
         var randomRatio = Math.floor(Math.random() * ratios.length); //random size of new fish
@@ -239,6 +250,7 @@ window.onload = function() {
 
       if (fishSchoanArr[i].x < 0) fishSchoanArr.splice(i, 1);
     }
+
     document.getElementById("score").innerHTML = "Kisses: " + score;
     if (!gameOver) window.requestAnimationFrame(updateCanvas);
   }

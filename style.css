@@ -69,6 +69,10 @@ html {
   position: relative;
 }
 
+.keyNavigation {
+  font-size: 28px;
+}
+
 #newGame-button {
   padding: 8px 25px;
   font-size: 25px;
