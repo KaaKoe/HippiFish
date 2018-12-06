@@ -18,6 +18,8 @@ window.onload = function() {
     }
   };
 
+  
+
   //click start-button --> start Game
   document.getElementById("start-button").onclick = function() {
     if (!gameStarted) {
