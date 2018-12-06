@@ -7,10 +7,13 @@ window.onload = function() {
   var playerName = "";
   drawHighscore();
 
+  
+
   document.onkeydown = function (event) {
     switch (event.keyCode) {
       case 13:
       playerName = $("#typeName").val();
+      gameStarted = false;
     if (playerName != 0) {
       $(".enterNameDiv").hide();
       $(".startDiv").show();
@@ -18,8 +21,7 @@ window.onload = function() {
       alert("Please type in your name!");
     }
     }
-  }
-
+  };
 
   //enter your name and click submit button to continue
   document.getElementById("submitButton").onclick = function() {
@@ -32,6 +34,7 @@ window.onload = function() {
     }
   };
 
+  
 
 
   //click start-button --> start Game
@@ -43,6 +46,7 @@ window.onload = function() {
       $(".startDiv").hide();
     }
   };
+
 
   document.getElementById("newGame-button").onclick = function() {
     window.location.reload();
@@ -62,7 +66,7 @@ window.onload = function() {
 
 
   //variable defining start position of userFish
-  var userFishYPosition = 300; /*canvas.height / 2 - userFishHeight / 2;*/
+  var userFishYPosition = 300; 
   var userFishXPosition = 16;
 
   //Array for fishSchoan coming into frame randomly from right side
@@ -145,7 +149,7 @@ window.onload = function() {
 
   var gameOver = false;
 
-  //function that undates my main-Canvas constantly
+  //function that updates my main-Canvas constantly
   function updateCanvas() {
     imgUserFish.onload = function() {
       ctx.drawImage(
@@ -296,25 +300,25 @@ window.onload = function() {
 
   //move userFish up
   function moveUp() {
-    if (userFishYPosition > userFishHeight / 2) {
+    if (userFishYPosition > userFishHeight - 25) {
       userFishYPosition -= 5;
     }
   }
   //move userFish down
   function moveDown() {
-    if (userFishYPosition < canvas.height - userFishHeight / 2)
+    if (userFishYPosition < canvas.height - userFishHeight)
       userFishYPosition += 5;
   }
 
   //move userFish right
   function moveRight() {
-    if (userFishXPosition < canvas.width - userFishWidth / 2);
+    if (userFishXPosition < canvas.width - userFishWidth)
     userFishXPosition += 5;
   }
 
   //move userFish left
   function moveLeft() {
-    if (userFishYPosition > userFishWidth / 2);
+    if (userFishXPosition > userFishWidth / 2)
     userFishXPosition -= 5;
   }
 
